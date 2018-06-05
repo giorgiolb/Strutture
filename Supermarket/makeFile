@@ -1,0 +1,4 @@
+gcc -c -o main.o main.c
+gcc -c -o queue_functions.o queue_functions.c
+gcc -std=c99 main.o queue_functions.o -lm
+./a.out
