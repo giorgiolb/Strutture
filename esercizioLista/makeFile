@@ -1,0 +1,4 @@
+gcc -c -o main.o main.c
+gcc -c -o list_functions.o list_functions.c
+gcc -std=c99 main.o list_functions.o -o franco
+./franco
