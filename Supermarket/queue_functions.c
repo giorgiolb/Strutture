@@ -4,6 +4,7 @@
 #include<stdlib.h>
 
 struct cliente{
+  int nome;
   int tempoS;
   struct cliente *nextCliente;
 };
@@ -14,12 +15,6 @@ typedef Cliente *ClientePtr;
 ClientePtr headPtr;
 ClientePtr tailPtr;
 
-void queueInit();
-void enqueue(int item);
-int dequeue();
-int isEmpty();
-void printQueue();
-int tempoServizio();
 
 void queueInit(){
   headPtr=tailPtr=NULL;
@@ -29,10 +24,12 @@ int isEmpty(){
   return headPtr==NULL;
 }
 
-void enqueue(){
+void enqueue(int item){
   ClientePtr cliente=malloc(sizeof(Cliente));
-  cliente->tempoS=rand()3+1;
+  cliente->tempoS=rand()%3+1;
+  cliente->nome=item;
   cliente->nextCliente=NULL;
+  printf("Il cliente %d e' entrato in coda\n",cliente->nome);
 
   if(isEmpty()){
     headPtr=cliente;
@@ -51,18 +48,20 @@ int dequeue(){
   if(headPtr==NULL){
     tailPtr=NULL;
   }
+  printf("Il cliente %d e' uscito dalla lista\n", tempPtr->nome);
   free(tempPtr);
+
   return valore;
 }
 
 void printQueue(){
 ClientePtr currentPtr=headPtr;
   if(currentPtr==NULL){
-    printf("La lista e' vuota");
+    printf("La lista e' vuota\n");
   }
   else{
     while(currentPtr!=NULL){
-      printf("%d--> ",currentPtr->tempoS);
+      printf("%d--> ",currentPtr->nome);
       currentPtr=currentPtr->nextCliente;
     }
     puts("NULL");

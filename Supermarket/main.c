@@ -7,19 +7,17 @@
 
 int main(){
 srand(time(NULL));
-int a=0;
+int a=rand()%3+1;
 int b=0;
 int controllo=0;
 int risultato=0;
+int nome=1;
 
 for(size_t i=0;i<TEMPO;i++){
-
-  if(a==0){
-  a=rand()%3+1;
-  }
-
+printf("Minuto %d:",i);
   if(controllo==a){
-    enqueue(a);
+    enqueue(nome);
+    nome++;
     controllo=0;
     a=rand()%3+1;
   }
@@ -35,9 +33,10 @@ if(!isEmpty()){
     b++;
   }
   }
-if(i==10){
+if((i>0)&&(i%10==0)){
   printQueue();
 }
+puts("\n");
 }
 
 }
